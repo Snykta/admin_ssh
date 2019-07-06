@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<constant name="strutrs.i18n.encoding" value="UTF-8"/>
+	<constant name="struts.objectFactory" value="spring"></constant>
+	<constant name="struts.devMode" value="true"/>
+	
+		<package name="mypack1" namespace="/" extends="json-default,struts-default" strict-method-invocation="false">
+			<action name="*_AdminUserAction" class="admin_useraction" method="{1}User">
+				<result name="login" type="json">
+				<param name="root">result</param>
+				</result>
+				
+				<result name="updateMessage" type="json">
+				<param name="root">result</param>
+				</result>
+				
+				<result name="updatepass" type="json">
+				<param name="root">result</param>
+				</result>
+				
+				<result name="signout" type="redirect">/login.html</result>
+				
+				<result name="selectIp" type="json">
+				<param name="root">result</param>
+				</result>
+				
+				<result name="register" type="json">
+				<param name="root">result</param>
+				</result>
+				
+				<result name="select" type="json">
+				<param name="root">result</param>
+				</result>
+			</action>
+			
+			<action name="codep" class="vaercode" method="getcode">
+			</action>
+			
+			
+			<action name="*_news" class="news_action" method="{1}News">
+			
+			<result name="addnews" type="redirect">/news.html</result>
+			
+			<result name="upload" type="json">
+			<param name="root">result</param>
+			</result>
+			
+			
+			<result name="select" type="json">
+			<param name="root">result</param>
+			</result>
+			
+			<result name="delte" type="json">
+			<param name="root">result</param>
+			</result>
+			
+			<result name="deltes" type="json">
+			<param name="root">result</param>
+			</result>
+			
+			<result name="findPage" type="json">
+			<param name="root">result</param>
+			</result>
+			
+			<result name="search" type="json">
+			<param name="root">stitle</param>
+			</result>
+			</action>
+			
+			
+			<action name="*_newstypeaction" class="newstypeaction" method="{1}">
+			
+			<result name="selecttype" type="json">
+			<param name="root">result</param>
+			</result>
+			
+			<result name="add" type="redirect">/news_add.html</result>
+			</action>
+
+			<action name="*_new" class="updateaction" method="{1}New">
+			<result name="select" type="json">
+			<param name="root">result</param>
+			</result>
+			<result name="update">/news.html</result>
+			</action>
+			
+			
+			<action name="*_link" class="linkaction" method="{1}Link">
+			
+			<result name="add">/link.html</result>
+			
+			<result name="conts" type="json">
+			<param name="root">result</param>
+			</result>
+			
+			<result name="page" type="json">
+			<param name="root">result</param>
+			</result>
+			
+			
+			<result name="del" type="json">
+			<param name="root">result</param>
+			</result>
+			
+			
+			<result name="select" type="json">
+			<param name="root">result</param>
+			</result>
+			<result name="update">/link.html</result>
+			
+			</action>
+		</package>
+		
+		<!-- 资源下载 -->
+	<package name="mypack2" namespace="/" extends="struts-default,json-default" strict-method-invocation="false">
+	
+	<action name="DowmFile" class="download" method="downfile">
+	<result name="download" type="stream">
+	<param name="inputName">fileStream</param>
+	<param name="contentDisposition">attatchment;filename=${filename}</param>
+	</result>
+	</action>
+	
+	<action name="*_filelists" class="filelists" method="{1}">
+	<result name="lists" type="json">
+	<param name="root">filelist</param>
+	</result>
+	
+	<result name="delfile" type="json">
+	<param name="root">filelist</param>
+	</result>
+	</action>
+	</package>
+		
+		<!--  一对多的人员与部门-->
+	<package name="mypack3" namespace="/" extends="struts-default,json-default" strict-method-invocation="false">
+	<action name="*_deptaction" class="deptaction" method="{1}">
+	
+	<result name="select" type="json">
+	<param name="root">result</param>
+	</result>
+	
+	<result name="conts" type="json">
+	<param name="root">result</param>
+	</result>
+	
+		
+	<result name="pagef" type="json">
+	<param name="root">result</param>
+	</result>
+	
+	<result name="del" type="json">
+	<param name="root">result</param>
+	</result>
+	
+	<result name="add" type="redirect">/dept.html</result>
+	
+	<result name="update" type="redirect">/dept.html</result>
+	
+	
+	<result name="findid" type="json">
+	<param name="root">result</param>
+	</result>
+	</action>
+	
+	
+	
+	
+	<action name="*_puseraction" class="p_useraction" method="{1}">
+	
+	<result name="add" type="redirect">/users.html</result>
+	
+	
+	<result name="conts" type="json">
+	<param name="root">result</param>
+	</result>
+	
+	<result name="pagef" type="json">
+	<param name="root">result</param>
+	</result>
+	
+	<result name="del" type="json">
+	<param name="root">result</param>
+	</result>
+	
+	<result name="findid" type="json">
+	<param name="root">result</param>
+	</result>
+	
+	<result name="update" type="redirect">/users.html</result>
+	
+	<result name="search" type="json">
+	<param name="root">result</param>
+	</result>
+	
+	<result name="updatedeptus" type="redirect">/dept.html</result>
+	</action>
+	</package>
+		
+</struts>  
