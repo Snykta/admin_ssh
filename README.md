@@ -2,7 +2,7 @@
 
 一个后台管理系统，采用mvc设计模式，面向接口三层开发
 
-后端框架：struts2+hibernate+spring(基于注解配置)
+后端框架：struts2+hibernate+spring(框架基于注解配置)
 
 前端框架：layui+jquery
 
